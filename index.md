@@ -942,7 +942,79 @@ ggplot(df, aes(index(df))) +
     geom_point(aes(y = df$x, color="predicted"))
 ```
 
-![png](./assets/3/output_26_2.png)
+
+![png](./assets/3/output_28_2.png)
+
+
+```R
+periodToForecast = 24
+trainPeriod = nrow(HomePrice)-periodToForecast
+
+# Split data into training set
+train = HomePrice[1:trainPeriod]
+
+# Create new model with training set
+fit = arima(train, order=c(0,2,2), seasonal=list(order=c(1,0,1),period=12),  method = "ML")
+
+# Create prediction
+predictions = predict(fit,n.ahead=periodToForecast,se.fit=TRUE)
+```
+
+
+```R
+# Create dataframe of HomePrice with prediction and 2 * SE bounds
+pred = c()
+upper = c()
+lower = c()
+for(i in 1:nrow(HomePrice)){
+    if(i <= nrow(HomePrice) - periodToForecast){
+        pred[i] = HomePrice$CSUSHPINSA[i]
+        upper[i] = HomePrice$CSUSHPINSA[i]
+        lower[i] = HomePrice$CSUSHPINSA[i]
+    }else{
+        p = i - trainPeriod
+        pred[i] = predictions$pred[p]
+        upper[i] = predictions$pred[p] + 2*predictions$se[p]
+        lower[i] = predictions$pred[p] - 2*predictions$se[p]
+    }
+}
+withPrediction = merge(HomePrice, pred, upper, lower)
+
+ggplot(withPrediction, aes(Index)) + 
+    geom_line(aes(y = withPrediction$pred, color="predicted")) +
+    geom_line(aes(y = withPrediction$upper), linetype="dashed") +
+    geom_line(aes(y = withPrediction$lower), , linetype="dashed") +
+    geom_line(aes(y = withPrediction$CSUSHPINSA, color="actual"))
+```
+
+
+
+
+![png](./assets/3/output_30_2.png)
+
+
+
+```R
+library(DescTools)
+
+rmseM4 = RMSE(withPrediction[-24]$pred, withPrediction[-24]$CSUSHPINSA)
+maeM4 = MAE(withPrediction[-24]$pred, withPrediction[-24]$CSUSHPINSA)
+
+sprintf("RSME: %s", rmseM4)
+sprintf("MAE: %s", maeM4)
+```
+
+
+'RSME: 0.20343626321072'
+
+
+
+'MAE: 0.0301369453065544'
+
+
+### Forecasting with Model2
+
+For comparison, we will also generate a forecast using model2, the best model for non-seasonal ARIMA, using the same methodology as above. 
 
 
 ```R
