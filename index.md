@@ -1,6 +1,4 @@
-# Submission 1
-
-## Basic Statistics
+# Basic Statistics
 
 Download JP Morgan stock historical prices from Yahoo Finance
 
@@ -10,9 +8,9 @@ Frequency: Daily
 
 Price considered in the analysis: Close price adjusted for dividends and splits
 
-### Calculations in R
+## Calculations in R
 
-#### Overview of data
+### Overview of data
 
 Prior to performing the calculations, we will first get an overview of the downloaded data by:
 
@@ -78,7 +76,7 @@ ggplot(JPM, aes(Index)) +
 
 ![png](./1/output_2_1.png)
 
-#### 1.1 Average stock value
+### 1.1 Average stock value
 
 ```R
 # Calculate mean of closing price
@@ -88,7 +86,7 @@ sprintf("1.1. Average stock value: %s", jpmMeanAdj)
 
 '1.1. Average stock value: 108.786558755459'
 
-#### 1.2 Stock volatility
+### 1.2 Stock volatility
 
 ```R
 # Calculate standard deviation of closing price
@@ -99,7 +97,7 @@ sprintf("1.2. Stock Volatility: %s", jpmVol)
 
 '1.2. Stock Volatility: 4.63417113735034'
 
-#### 1.3 Daily stock return
+### 1.3 Daily stock return
 
 For the daily stock returns, we will print both the daily returns and daily logs returns:
 
@@ -160,7 +158,7 @@ ggplot(jpmWithReturns, aes(Index)) +
 ![png](./1/output_7_1.png)
 
 
-### Calculations in Excel
+## Calculations in Excel
 
 ![png](./excel/overview.png)
 
@@ -184,7 +182,7 @@ ggplot(jpmWithReturns, aes(Index)) +
 
 ![png](./excel/jpm-closed.png)
 
-## Linear Regression
+# Linear Regression
 
 Explained variable: JP Morgan stock (adjusted close price)
 
@@ -194,7 +192,7 @@ Period: February 1, 2018 – December 30, 2018
 
 Frequency: Daily
 
-### Implement a two-variable regression in R
+## Implement a two-variable regression in R
 
 ```R
 library(quantmod)
@@ -433,7 +431,7 @@ The "F value'' tests the overall significance of the regression model.  Specific
 According to the JPM scatterplot, we can see the stock price evolution going up and down with daily return fluctuation around 0. Based on the S&P 500 vs JPM - Regression Scatter Plot, there is obvious upward trend between S&P 500 index and JPM stock.
 
 
-## Univariate Time Series Analysis
+# Univariate Time Series Analysis
 
 Forecast S&P/Case-Shiller U.S. National Home Price Index using an ARMA model.
 
@@ -443,7 +441,7 @@ Period considered in the analysis: January 1978 – latest data
 
 Frequency: monthly data
 
-### Overview of the data
+## Overview of the data
 
 
 ```R
@@ -494,7 +492,7 @@ ggplot(HomePrice, aes(Index)) +
 
 ![png](./3/output_3_2.png)
 
-### Implemented the Augmented Dickey-Fuller Test for checking the existence of a unit root in Case-Shiller Index series
+## Implemented the Augmented Dickey-Fuller Test for checking the existence of a unit root in Case-Shiller Index series
 
 
 The adf test suggest that the model is non-statitionary. With the p-value at 0.4123, we cannot reject the null hypothesis that an unit root is present.
@@ -517,7 +515,7 @@ adf.test(as.ts(HomePrice))
 
 
 
-## ACF & PACF Chart
+### ACF & PACF Chart
 
 The ACF decays very slowly as the lag increases. This further confirms the need to difference the time series data.
 
@@ -535,9 +533,9 @@ pacf(HomePrice)
 ![png](./3/output_7_0.png)
 
 
-## Differencing
+### Differencing
 
-### Diff 1
+#### Diff 1
 
 Applying diff 1 to the data, we obtained a p-value of 0.2558 on the ADF test. This suggest that the data is still not stationary at the 1% significance level.
 
@@ -559,7 +557,7 @@ adf.test(as.ts(diff1))
 
 
 
-### Diff 2
+#### Diff 2
 
 Applying diff 2 to the data, we obtained a p-value of 0.01 on the ADF test, suggesting that we can reject the null hypothesis where a unit root is present. 
 
@@ -582,11 +580,11 @@ adf.test(as.ts(diff2))
     Dickey-Fuller = -15.602, Lag order = 7, p-value = 0.01
     alternative hypothesis: stationary
 
-### Implement an ARIMA(p,d,q) model. Determine p, d, q using Information Criterion or Box-Jenkins methodology. Comment results
+## Implement an ARIMA(p,d,q) model. Determine p, d, q using Information Criterion or Box-Jenkins methodology. Comment results
 
-## ACF & PACF of diff(2)
+### ACF & PACF of diff(2)
 
-### ACF
+#### ACF
 
 The ACF chart for diff(2) shows that there are still significant correlation between the time series that are significantly different from 0 (as observed from the blue dotted lines). 
 
@@ -594,7 +592,7 @@ The sinusiodal graph may suggest the need for AR(2) graph.
 
 However, we can also observe a negative correlation at lag 6 and a strong positive correlation at lag 12. This may suggest a seasonal AR with a period of 12.
 
-### PACF
+#### PACF
 
 The PACF chart shows an AR(1) signature where PACF shows a sharp cut-off at the first lag.
 
@@ -612,7 +610,7 @@ pacf(diff2)
 ![png](./3/output_13_0.png)
 
 
-## Model 1 - ARIMA(0, 2, 0)
+### Model 1 - ARIMA(0, 2, 0)
 
 
 Name | Value
@@ -653,7 +651,7 @@ tsdiag(model1)
 ![png](./3/output_15_1.png)
 
 
-## Model 2 - ARIMA(0, 2, 2)
+### Model 2 - ARIMA(0, 2, 2)
 
 Name | Value
 --- | ---
@@ -711,7 +709,7 @@ tsdiag(model2)
 ![png](./3/output_17_2.png)
 
 
-## Model 3 - ARIMA(2, 2, 0)
+### Model 3 - ARIMA(2, 2, 0)
 
 Name | Value
 --- | ---
@@ -772,11 +770,11 @@ tsdiag(model3)
 ![png](./3/output_19_2.png)
 
 
-## Seasonal ARIMA
+### Seasonal ARIMA
 
 As suggested by the high positive correlation at lag 12, it is highly possible that the model would be seasonal with period 12. This is further confirmed by the unexplained spiked of ACF for the non-seasonal model at lags of 6, 12, 18 and 24.
 
-## Model 4 - ARIMA (0,2,0) (2,0,0) 12
+### Model 4 - ARIMA (0,2,0) (2,0,0) 12
 
 Name | Value
 --- | ---
@@ -836,7 +834,7 @@ tsdiag(model4)
 ![png](./3/output_21_2.png)
 
 
-## Model 5 - ARIMA (0,2,0) (0,0,2) 12
+### Model 5 - ARIMA (0,2,0) (0,0,2) 12
 
 Name | Value
 --- | ---
@@ -893,7 +891,7 @@ tsdiag(model5)
 ![png](./3/output_23_2.png)
 
 
-## Model Selection
+### Model Selection
 
 Model | Variance | Log Likelihood | AIC | RMSE
 --- | --- | --- | --- | ---
@@ -907,9 +905,9 @@ Comparing the non-seasonal models, we can see that model2, ARIMA(0,2,2) is the b
 
 However, if we take seasonality into account, we can see that model4, ARIMA(0,2,0)(0,0,2)12, stands out as the best model for the forecast. 
 
-### Forecast the future evolution of Case-Shiller Index using the ARMA model. Test model using in-sample forecasts
+## Forecast the future evolution of Case-Shiller Index using the ARMA model. Test model using in-sample forecasts
 
-## Forecasting with Model4
+### Forecasting with Model4
 
 Using model4, we will attempt to forecast the last 24 periods of the timeseries.
 
@@ -989,13 +987,13 @@ sprintf("MAE: %s", maeM4)
 
 'MAE: 0.0904105973244109'
 
-##  Conclusion
+### Conclusion
 
 From the graph above, we can see that the ARIMA (0,2,0)(2,0,0)12 model did a great job at forecasting the time series. 
 
 This is further confirmed by the RSME of 0.42 on untrained data, which is very close to the RSME of model 4 at 0.2646128.
 
-### Suggest exogenous variables that can improve forecasts
+## Suggest exogenous variables that can improve forecasts
 
 Prices are affected by supply and demand. Thus, supply-
 side factors could include number of houses and interest rates (i.e. ease of getting a
