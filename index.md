@@ -535,7 +535,9 @@ adf.test(as.ts(HomePrice))
 
 The ACF decays very slowly as the lag increases. This further confirms the need to difference the time series data.
 
-The PACF displays a sharp cut-off at lag 1. This could be identified as an AR signature. 
+The PACF displays a sharp cut-off at lag 1.
+
+This shows a MA signature 
 
 
 ```R
@@ -626,7 +628,8 @@ pacf(diff2)
 ![png](./assets/3/output_13_0.png)
 
 
-### Model 1 - ARIMA(0, 2, 0)
+
+## Model 1 - ARIMA(0, 2, 0)
 
 
 Name | Value
@@ -638,7 +641,7 @@ RMSE | 0.4115899
 
 ACF chart still continues to diplay the sinusoidal wave, peaking at lag 6, 12, 18, 24. This suggest the need for AR(2). 
 
-Ljung-Box-Pierce statistics shows that the model's accumulated residual autocorrelation is not significant up to lag 20. 
+Ljung-Box-Pierce statistics shows that for all lags, the residuals are not independently distributed.
 
 
 ```R
@@ -650,6 +653,8 @@ summary(model1)
 # Print diagnostics of model1
 tsdiag(model1)
 ```
+
+    
     Call:
     arima(x = window(HomePrice), order = c(0, 2, 0), method = "ML")
     
@@ -667,7 +672,7 @@ tsdiag(model1)
 ![png](./assets/3/output_15_1.png)
 
 
-### Model 2 - ARIMA(0, 2, 2)
+## Model 2 - ARIMA(0, 2, 2)
 
 Name | Value
 --- | ---
@@ -678,7 +683,7 @@ RMSE | 0.3309369
 
 ACF chart shows smaller spikes compared to model1's. However, it can still be observed that the spiked at 6, 12, 18, 24 is still significant. This suggest that there are correlation that has yet to be accounted for.
 
-Ljung-Box-Pierce statistics shows that the model's accumulated residual autocorrelation is significant at lag 1 to 4.
+Ljung-Box-Pierce statistics shows that for lag 1 to 4, the residuals are independently distributed (white noise), which is good.
 
 Both coefficient, ar1 & ar2, are tested to be significantly different from zero.
 
@@ -695,6 +700,8 @@ coeftest(model2)
 # Print diagnostics of model2
 tsdiag(model2)
 ```
+
+    
     Call:
     arima(x = window(HomePrice), order = c(0, 2, 2), method = "ML")
     
@@ -710,6 +717,9 @@ tsdiag(model2)
     Training set -0.001339956 0.3309369 0.2003839 0.001235961 0.1496965 0.2693058
                         ACF1
     Training set 0.001531978
+
+
+
     
     z test of coefficients:
     
@@ -725,7 +735,7 @@ tsdiag(model2)
 ![png](./assets/3/output_17_2.png)
 
 
-### Model 3 - ARIMA(2, 2, 0)
+## Model 3 - ARIMA(2, 2, 0)
 
 Name | Value
 --- | ---
@@ -736,7 +746,8 @@ RMSE | 0.3406494
 
 ACF chart shows smaller spikes compared to model1's. However, it can still be observed that the spiked at 6, 12, 18, 24 is still significant. This suggest that there are correlation that has yet to be accounted for.
 
-Ljung-Box-Pierce statistics shows that the model's accumulated residual autocorrelation is not significant up to lag 20, except for lag 1.
+Ljung-Box-Pierce statistics shows that for all lags, except lag 1, the residuals are not independently distributed.
+
 
 Both coefficient, ar1 & ar2, are tested to be significantly different from zero.
 
@@ -755,6 +766,8 @@ coeftest(model3)
 # Print diagnostics of model3
 tsdiag(model3)
 ```
+
+    
     Call:
     arima(x = window(HomePrice), order = c(2, 2, 0), method = "ML")
     
@@ -771,6 +784,8 @@ tsdiag(model3)
                         ACF1
     Training set -0.04423696
 
+
+
     
     z test of coefficients:
     
@@ -786,11 +801,11 @@ tsdiag(model3)
 ![png](./assets/3/output_19_2.png)
 
 
-### Seasonal ARIMA
+## Seasonal ARIMA
 
 As suggested by the high positive correlation at lag 12, it is highly possible that the model would be seasonal with period 12. This is further confirmed by the unexplained spiked of ACF for the non-seasonal model at lags of 6, 12, 18 and 24.
 
-### Model 4 - ARIMA (0,2,0) (2,0,0) 12
+## Model 4 - ARIMA (0,2,0) (2,0,0) 12
 
 Name | Value
 --- | ---
@@ -801,7 +816,8 @@ RMSE | 0.2646128
 
 ACF chart shows smaller spikes compared to model3's. However, there are still significant spikes at lag 3, 7, 11, 16, 23.
 
-Ljung-Box-Pierce statistics shows that the model's accumulated residual autocorrelation is not significant up to lag 20. 
+Ljung-Box-Pierce statistics shows that for all lags, the residuals are not independently distributed.
+
 
 Both coefficient, sar1 & sar2, are tested to be significantly different from zero.
 
@@ -817,6 +833,7 @@ coeftest(model4)
 # Print diagnostics of model4
 tsdiag(model4)
 ```
+
     
     Call:
     arima(x = window(HomePrice), order = c(0, 2, 0), seasonal = list(order = c(2, 
@@ -835,6 +852,8 @@ tsdiag(model4)
                       ACF1
     Training set 0.1308832
 
+
+
     
     z test of coefficients:
     
@@ -850,7 +869,7 @@ tsdiag(model4)
 ![png](./assets/3/output_21_2.png)
 
 
-### Model 5 - ARIMA (0,2,0) (0,0,2) 12
+## Model 5 - ARIMA (0,2,0) (0,0,2) 12
 
 Name | Value
 --- | ---
@@ -861,7 +880,7 @@ RMSE | 0.30329
 
 ACF chart showed similar sinusoidal wave as the model1-3, with smaller ACF spikes on lag 12 and 24. The ACF spikes does not seemed to smoothened around those periods and the ACF spikes on lag 6 and 18 were not affected. This suggest that adding order to the SMA term does not futher explain the prices.
 
-Ljung-Box-Pierce statistics shows that the model's accumulated residual autocorrelation is not significant up to lag 20. 
+Ljung-Box-Pierce statistics shows that for all lags, the residuals are not independently distributed.
 
 Both coefficient, sar1 & sar2, are tested to be significantly different from zero.
 
@@ -877,6 +896,8 @@ coeftest(model5)
 # Print diagnostics of model5
 tsdiag(model5)
 ```
+
+    
     Call:
     arima(x = window(HomePrice), order = c(0, 2, 0), seasonal = list(order = c(0, 
         0, 2), period = 12), method = "ML")
@@ -894,6 +915,8 @@ tsdiag(model5)
                       ACF1
     Training set 0.2722617
 
+
+
     
     z test of coefficients:
     
@@ -904,10 +927,79 @@ tsdiag(model5)
     Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 
 
+
+
 ![png](./assets/3/output_23_2.png)
 
 
-### Model Selection
+## Model 6 - ARIMA (0,2,2) (1,0,1) 12
+
+Following the success of the ARIMA(0,2,2) model, we explore the (0,2,2)(1,0,1)12 model.
+
+Name | Value
+--- | ---
+Variance | 0.06503
+Log likelihood | -25.19
+AIC | 60.39
+RMSE | 0.2543877
+
+ACF chart showed similar sinusoidal wave as the model1-3, without ACF spikes on lag 6, 12, 18. 24. However, some spikes are observed at 3, 11, 15, 16.
+
+Ljung-Box-Pierce statistics shows that for lag 1 and 2, the residuals are independently distributed (white noise), which is good. 
+
+All coefficients, ma1, ma2, sar1 and sma2, are tested to be significantly different from zero.
+
+
+```R
+model6 <- arima(window(HomePrice), order=c(0,2,2), seasonal=list(order=c(1,0,1),period=12),  method = "ML")
+# Print summary
+summary(model6)
+
+# Coefficient test
+coeftest(model6)
+
+# Print diagnostics
+tsdiag(model6)
+```
+
+    
+    Call:
+    arima(x = window(HomePrice), order = c(0, 2, 2), seasonal = list(order = c(1, 
+        0, 1), period = 12), method = "ML")
+    
+    Coefficients:
+             ma1     ma2    sar1     sma1
+          0.2622  0.2028  0.9274  -0.5742
+    s.e.  0.0617  0.0592  0.0274   0.0746
+    
+    sigma^2 estimated as 0.06503:  log likelihood = -25.19,  aic = 60.39
+    
+    Training set error measures:
+                            ME      RMSE       MAE        MPE      MAPE      MASE
+    Training set -0.0009910676 0.2543877 0.1454871 0.00120389 0.1104111 0.1955272
+                       ACF1
+    Training set -0.0400247
+
+
+
+    
+    z test of coefficients:
+    
+          Estimate Std. Error z value  Pr(>|z|)    
+    ma1   0.262224   0.061718  4.2488 2.149e-05 ***
+    ma2   0.202795   0.059208  3.4252 0.0006145 ***
+    sar1  0.927414   0.027411 33.8340 < 2.2e-16 ***
+    sma1 -0.574232   0.074563 -7.7013 1.347e-14 ***
+    ---
+    Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+
+
+
+![png](./assets/3/output_25_2.png)
+
+
+## Model Selection
 
 Model | Variance | Log Likelihood | AIC | RMSE
 --- | --- | --- | --- | ---
@@ -916,16 +1008,15 @@ Model | Variance | Log Likelihood | AIC | RMSE
 3 | 0.1166 | -131.82 | 269.64 | 0.3406494
 4 | 0.07037 | -40.53 | 87.07 | 0.2646128
 5 | 0.09245 | -90.1 | 186.19 | 0.30329
+6 | 0.06503 | -25.19 | 60.39 | 0.2543877
 
-Comparing the non-seasonal models, we can see that model2, ARIMA(0,2,2) is the best model. 
+Comparing the non-seasonal models, we can see that model2, ARIMA(0,2,2) is the best model.
 
-However, if we take seasonality into account, we can see that model4, ARIMA(0,2,0)(0,0,2)12, stands out as the best model for the forecast. 
+However, if we take seasonality into account, we can see that model6, ARIMA(0,2,2)(1,0,1)12, stands out as the best model for the forecast.
 
-## 3.3 Forecast the future evolution of Case-Shiller Index using the ARMA model. Test model using in-sample forecasts
+## Forecasting with Model6
 
-### Forecasting with Model4
-
-Using model4, we will attempt to forecast the last 24 periods of the timeseries.
+Using model6, we will attempt to forecast the last 24 periods of the timeseries.
 
 First, we will split the data into training set and testing set. The testing set will have the actual price index of the last 24 period and the training set will have all the remaining data.
 
@@ -937,13 +1028,17 @@ Finally, we will assess the fit by calculating the RSME and MAE of the actual va
 ```R
 # From the residual plot, we can see that the model starts to diverge at around period 200
 # We will forecast ahead for 24 periods to ensure that we do not forecast too far into the future
-df = as.data.frame(model4$residuals)
+df = as.data.frame(model6$residuals)
 ggplot(df, aes(index(df))) + 
     geom_point(aes(y = df$x, color="predicted"))
 ```
 
 
+
+
+
 ![png](./assets/3/output_28_2.png)
+
 
 
 ```R
@@ -990,6 +1085,7 @@ ggplot(withPrediction, aes(Index)) +
 
 
 
+
 ![png](./assets/3/output_30_2.png)
 
 
@@ -1012,7 +1108,7 @@ sprintf("MAE: %s", maeM4)
 'MAE: 0.0301369453065544'
 
 
-### Forecasting with Model2
+## Forecasting with Model2
 
 For comparison, we will also generate a forecast using model2, the best model for non-seasonal ARIMA, using the same methodology as above. 
 
@@ -1025,7 +1121,7 @@ trainPeriod = nrow(HomePrice)-periodToForecast
 train = HomePrice[1:trainPeriod]
 
 # Create new model with training set
-fit = arima(train, order=c(0,2,0), seasonal=list(order=c(2,0,0),period=12),  method = "ML")
+fit = arima(train, order=c(0,2,2),  method = "ML")
 
 # Create prediction
 predictions = predict(fit,n.ahead=periodToForecast,se.fit=TRUE)
@@ -1058,7 +1154,12 @@ ggplot(withPrediction, aes(Index)) +
     geom_line(aes(y = withPrediction$CSUSHPINSA, color="actual"))
 ```
 
-![png](./assets/3/output_28_2.png)
+
+
+
+
+![png](./assets/3/output_34_2.png)
+
 
 
 ```R
@@ -1071,15 +1172,29 @@ sprintf("RSME: %s", rmseM4)
 sprintf("MAE: %s", maeM4)
 ```
 
-'RSME: 0.420224462539597'
 
-'MAE: 0.0904105973244109'
+'RSME: 3.15135963408827'
 
-### Conclusion
 
-From the graph above, we can see that the ARIMA (0,2,0)(2,0,0)12 model did a great job at forecasting the time series. 
 
-This is further confirmed by the RSME of 0.42 on untrained data, which is very close to the RSME of model 4 at 0.2646128.
+'MAE: 0.695226491205824'
+
+
+##  Conclusion
+
+The selected non-seasonal ARIMA model is (0,2,2) where p = 0, d = 2 & q = 2. However, the model does not fully explain the seasonal nature of the time series data.
+
+From seasonal models, we can see that model6 outperforms model2 significantly through visual confirmations, as well as comparing the RSME (0.203 vs 3.15).
+
+The selected seasonal ARIMA model is (0,2,2)(1,0,1)12 where:
+
+- p = 0
+- d = 2
+- q = 2
+- P = 1
+- D = 0
+- Q = 1
+- n = 12
 
 ## 3.4 Exogenous variables that can improve forecasts
 
