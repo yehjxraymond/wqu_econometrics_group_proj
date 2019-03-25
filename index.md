@@ -1015,10 +1015,10 @@ Prices are affected by supply and demand. Thus, supply-side factors could includ
 
 # 4.0 References
 
-1. Nau, R., 2019, *"Statistical forecasting: Notes On Regression and Time Series Analysis",* https://people.duke.edu/~rnau/411home.htm
-2. Peng, R., 2014, *"Exploratory Data Analysis with R",* lulu.com
-3. Hyndman, R.J, Athanasopoulos, G., 2018, *"Forecasting: Principles and Practice (2nd Ed)",* OText.  
-4. Wickham, H., 2016, *"ggplot2: Elegant graphics for data analysis (2nd Ed)",* Springer. 
-5. Tsay, R.S, 2010, *"Analysis of Financial Time Series (3rd Ed)",* John Wiley & Sons.
-
-
+1. Tsay, R.S, 2010, *"Analysis of Financial Time Series (3rd Ed)",* John Wiley & Sons.
+2. Ang, C.S., 2015, *"Analyzing Financial Data and Implementing Financial Models Using R", Springer
+3. Peng, R., 2014, *"Exploratory Data Analysis with R",* lulu.com
+4. Hyndman, R.J, Athanasopoulos, G., 2018, *"Forecasting: Principles and Practice (2nd Ed)",* OText.  
+5. Wickham, H., 2016, *"ggplot2: Elegant graphics for data analysis (2nd Ed)",* Springer. 
+6. Nau, R., 2019, *"Statistical forecasting: Notes On Regression and Time Series Analysis",* https://people.duke.edu/~rnau/411home.htm
+7. Class Notes,*"Econometrics"*
