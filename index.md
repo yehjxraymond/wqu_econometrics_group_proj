@@ -162,15 +162,27 @@ ggplot(jpmWithReturns, aes(Index)) +
 
 ### Calculations in Excel
 
+![png](./excel/overview.png)
+
 ### 1.4 Average stock value
+
+![png](./excel/price-summary.png)
 
 ### 1.5 Stock volatility
 
+![png](./excel/price-summary.png)
+
 ### 1.6 Daily stock return
+
+![png](./excel/jpm-daily-returns.png)
 
 ### 1.7 Show JP Morgan stock price evolution using a scatter plot
 
+![png](./excel/jpm-closed.png)
+
 ### 1.8 Add a trendline to the graph (trendline options – linear)
+
+![png](./excel/jpm-closed.png)
 
 ## Linear Regression
 
@@ -183,8 +195,6 @@ Period: February 1, 2018 – December 30, 2018
 Frequency: Daily
 
 ### Implement a two-variable regression in R
-
-
 
 ```R
 library(quantmod)
@@ -409,6 +419,18 @@ ggplot(combinedWithPrediction, aes(date)) +
 
 
 ### Implement a two-variable regression in Excel using LINEST function and Analysis ToolPak
+
+![png](./excel/regression-coefficient.png)
+
+![png](./excel/snp-vs-jpm-scatter.png)
+
+From the calculation in excel, the average stock price of JPM is approximately 108.79 based on the mean value. The daily return of JPW ranges from -5.04% to 3.98% and the standard deviation of JPM stock is 0.0145. From the liner regression estimation, the coefficient between JPM stock and S&P 500 index is 16.47. R square is 57.9%, meaning 57.9% of the variation in JPM stock that is accounted for S&P 500 index. 
+
+The Sum of Squares Regression (SSR) is the sum of the squared differences between the prediction for each observation and the population mean. The residual sum of squares is used to help decide if a statistical model is a good fit. The proportion of total variation (SST) that is explained by the regression (SSR) is known as the Coefficient of Determination, and is often referred to as R square. In our case, the regression square of 1,372,666 divide the sum of square regression of 2,371,560 is R square, which is 57.9%. 
+
+The "F value'' tests the overall significance of the regression model.  Specifically, they test the null hypothesis that all of the regression coefficients are equal to zero.  The F value of 311.94 indicates the coefficient between JPM stock and S&P 500 index is non zero.
+
+According to the JPM scatterplot, we can see the stock price evolution going up and down with daily return fluctuation around 0. Based on the S&P 500 vs JPM - Regression Scatter Plot, there is obvious upward trend between S&P 500 index and JPM stock.
 
 
 ## Univariate Time Series Analysis
