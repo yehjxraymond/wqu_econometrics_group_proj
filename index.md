@@ -1,5 +1,6 @@
 # Submission No. 1: Regression and Univariate Analysis
 Author	: Mohd Nazri Nawi, Lu Liu, Raymond Yeh, Vincent Louie Delfin, Lu Liu
+
 Date	: March 17, 2019
 
 ## Code & Excel File
@@ -11,11 +12,11 @@ The R code and Excel files for this submission is located in the ./code as:
 - 3\. Univariate Time Series.ipynb
 - Regression Analysis.xlsx
 
-The R code are written in Jupyter Notebook with R Kernel. Installation istructions can be found [here]([google.com](https://docs.anaconda.com/anaconda/navigator/tutorials/r-lang/)).
+The R code are written in Jupyter Notebook with R Kernel. Installation instruction can be found [here]([google.com](https://docs.anaconda.com/anaconda/navigator/tutorials/r-lang/)).
 
-# Basic Statistics
+# 1.0 Basic Statistics
 
-Download JP Morgan stock historical prices from Yahoo Finance
+Historical JP Morgan stock prices is downloaded from Yahoo Finance.
 
 Period: February 1, 2018 – December 30, 2018
 
@@ -177,15 +178,15 @@ ggplot(jpmWithReturns, aes(Index)) +
 
 ![png](./excel/overview.png)
 
-### 1.4 Average stock value
+### 1.4 Average Stock Value
 
 ![png](./excel/price-summary.png)
 
-### 1.5 Stock volatility
+### 1.5 Stock Volatility
 
 ![png](./excel/price-summary.png)
 
-### 1.6 Daily stock return
+### 1.6 Daily Stock Return
 
 ![png](./excel/jpm-daily-returns.png)
 
@@ -197,7 +198,7 @@ ggplot(jpmWithReturns, aes(Index)) +
 
 ![png](./excel/jpm-closed.png)
 
-# Linear Regression
+# 2.0 Linear Regression
 
 Explained variable: JP Morgan stock (adjusted close price)
 
@@ -207,7 +208,7 @@ Period: February 1, 2018 – December 30, 2018
 
 Frequency: Daily
 
-## Implement a two-variable regression in R
+## 2.1 Implement a two-variable regression in R
 
 ```R
 library(quantmod)
@@ -431,7 +432,7 @@ ggplot(combinedWithPrediction, aes(date)) +
 ![png](./assets/2/output_9_1.png)
 
 
-### Implement a two-variable regression in Excel using LINEST function and Analysis ToolPak
+## 2.2 Implement a two-variable regression in Excel using LINEST function and Analysis ToolPak
 
 ![png](./excel/regression-coefficient.png)
 
@@ -446,13 +447,13 @@ The "F value'' tests the overall significance of the regression model.  Specific
 According to the JPM scatterplot, we can see the stock price evolution going up and down with daily return fluctuation around 0. Based on the S&P 500 vs JPM - Regression Scatter Plot, there is obvious upward trend between S&P 500 index and JPM stock.
 
 
-# Univariate Time Series Analysis
+# 3.0 Univariate Time Series Analysis
 
 Forecast S&P/Case-Shiller U.S. National Home Price Index using an ARMA model.
 
 Data source: https://fred.stlouisfed.org/series/CSUSHPINSA
 
-Period considered in the analysis: January 1978 – latest data
+Period considered in the analysis: January 1987 – January 2018
 
 Frequency: monthly data
 
@@ -507,7 +508,7 @@ ggplot(HomePrice, aes(Index)) +
 
 ![png](./assets/3/output_3_2.png)
 
-## Implemented the Augmented Dickey-Fuller Test for checking the existence of a unit root in Case-Shiller Index series
+## 3.1 Implemented the Augmented Dickey-Fuller Test for checking the existence of a unit root in Case-Shiller Index series
 
 
 The adf test suggest that the model is non-statitionary. With the p-value at 0.4123, we cannot reject the null hypothesis that an unit root is present.
@@ -595,7 +596,7 @@ adf.test(as.ts(diff2))
     Dickey-Fuller = -15.602, Lag order = 7, p-value = 0.01
     alternative hypothesis: stationary
 
-## Implement an ARIMA(p,d,q) model. Determine p, d, q using Information Criterion or Box-Jenkins methodology. Comment results
+## 3.2 Implement an ARIMA(p,d,q) model. Determine p, d, q using Information Criterion or Box-Jenkins methodology. Comment results
 
 ### ACF & PACF of diff(2)
 
@@ -920,7 +921,7 @@ Comparing the non-seasonal models, we can see that model2, ARIMA(0,2,2) is the b
 
 However, if we take seasonality into account, we can see that model4, ARIMA(0,2,0)(0,0,2)12, stands out as the best model for the forecast. 
 
-## Forecast the future evolution of Case-Shiller Index using the ARMA model. Test model using in-sample forecasts
+## 3.3 Forecast the future evolution of Case-Shiller Index using the ARMA model. Test model using in-sample forecasts
 
 ### Forecasting with Model4
 
@@ -1008,9 +1009,6 @@ From the graph above, we can see that the ARIMA (0,2,0)(2,0,0)12 model did a gre
 
 This is further confirmed by the RSME of 0.42 on untrained data, which is very close to the RSME of model 4 at 0.2646128.
 
-## Suggest exogenous variables that can improve forecasts
+## 3.4 Exogenous variables that can improve forecasts
 
-Prices are affected by supply and demand. Thus, supply-
-side factors could include number of houses and interest rates (i.e. ease of getting a
-mortgage). Demand-side factors could be population, wages, and inflation. GDP may be a
-factor that influences both supply and demand.
+Prices are affected by supply and demand. Thus, supply-side factors could include number of houses and interest rates (i.e. ease of getting a mortgage). Demand-side factors could be population, wages, and inflation. GDP may be a factor that influences both supply and demand.
