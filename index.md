@@ -881,7 +881,9 @@ Model | Variance | Log Likelihood | AIC | RMSE
 4 | 0.07037 | -40.53 | 87.07 | 0.2646128
 5 | 0.09245 | -90.1 | 186.19 | 0.30329
 
-Comparing the different models, we can see that model4, ARIMA(0,2,0)(0,0,2)12, stands out as the best model for the forecast. 
+Comparing the non-seasonal models, we can see that model2, ARIMA(0,2,2) is the best model. 
+
+However, if we take seasonality into account, we can see that model4, ARIMA(0,2,0)(0,0,2)12, stands out as the best model for the forecast. 
 
 ### Forecast the future evolution of Case-Shiller Index using the ARMA model. Test model using in-sample forecasts
 
