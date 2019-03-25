@@ -1,4 +1,6 @@
-# Submission
+# Submission No. 1: Regression and Univariate Analysis
+Author: Mohd Nazri Nawi, Lu Liu, Raymond Yeh, Vincent Louie Delfin, Lu Liu
+Date: "March 17, 2019"
 
 ## Code & Excel File
 The code of the submission is available at https://github.com/yehjxraymond/wqu_econometrics_group_proj
