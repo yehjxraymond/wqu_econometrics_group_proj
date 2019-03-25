@@ -10,7 +10,7 @@ The R code and Excel files for this submission is located in the ./code as:
 - 1\. Basic Statistics.ipynb
 - 2\. Linear Regression.ipynb
 - 3\. Univariate Time Series.ipynb
-- Regression Analysis.xlsx
+- 4\.Regression Analysis.xlsx
 
 The R code are written in Jupyter Notebook with R Kernel. Installation instruction can be found [here]([google.com](https://docs.anaconda.com/anaconda/navigator/tutorials/r-lang/)).
 
@@ -1012,3 +1012,13 @@ This is further confirmed by the RSME of 0.42 on untrained data, which is very c
 ## 3.4 Exogenous variables that can improve forecasts
 
 Prices are affected by supply and demand. Thus, supply-side factors could include number of houses and interest rates (i.e. ease of getting a mortgage). Demand-side factors could be population, wages, and inflation. GDP may be a factor that influences both supply and demand.
+
+# 4.0 References
+
+1. Nau, R., 2019, *"Statistical forecasting: Notes On Regression and Time Series Analysis",* https://people.duke.edu/~rnau/411home.htm
+2. Peng, R., 2014, *"Exploratory Data Analysis with R",* lulu.com
+3. Hyndman, R.J, Athanasopoulos, G., 2018, *"Forecasting: Principles and Practice (2nd Ed)",* OText.  
+4. Wickham, H., 2016, *"ggplot2: Elegant graphics for data analysis (2nd Ed)",* Springer. 
+5. Tsay, R.S, 2010, *"Analysis of Financial Time Series (3rd Ed)",* John Wiley & Sons.
+
+
