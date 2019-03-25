@@ -1,3 +1,16 @@
+# Submission
+
+## Code & Excel File
+The code of the submission is available at https://github.com/yehjxraymond/wqu_econometrics_group_proj
+
+The R code and Excel files for this submission is located in the ./code as: 
+- 1\. Basic Statistics.ipynb
+- 2\. Linear Regression.ipynb
+- 3\. Univariate Time Series.ipynb
+- Regression Analysis.xlsx
+
+The R code are written in Jupyter Notebook with R Kernel. Installation istructions can be found [here]([google.com](https://docs.anaconda.com/anaconda/navigator/tutorials/r-lang/)).
+
 # Basic Statistics
 
 Download JP Morgan stock historical prices from Yahoo Finance
@@ -74,7 +87,7 @@ ggplot(JPM, aes(Index)) +
 
 
 
-![png](./1/output_2_1.png)
+![png](./assets/1/output_2_1.png)
 
 ### 1.1 Average stock value
 
@@ -145,7 +158,7 @@ ggplot(jpmWithReturns, aes(Index)) +
 ```
 
 
-![png](./1/output_6_1.png)
+![png](./assets/1/output_6_1.png)
 
 ```R
 ggplot(jpmWithReturns, aes(Index)) + 
@@ -155,7 +168,7 @@ ggplot(jpmWithReturns, aes(Index)) +
     theme(plot.title = element_text(hjust = 0.5))
 ```
 
-![png](./1/output_7_1.png)
+![png](./assets/1/output_7_1.png)
 
 
 ## Calculations in Excel
@@ -255,7 +268,7 @@ ggplot(JPM, aes(Index)) +
 
 
 
-![png](./2/output_1_1.png)
+![png](./assets/2/output_1_1.png)
 
 
 output_
@@ -274,7 +287,7 @@ ggplot(GSPC, aes(Index)) +
 
 
 
-![png](./2/output_2_1.png)
+![png](./assets/2/output_2_1.png)
 
 
 
@@ -312,7 +325,7 @@ ggplot(combined, aes(GSPC)) +
 
 
 
-![png](./2/output_4_1.png)
+![png](./assets/2/output_4_1.png)
 
 
 
@@ -401,7 +414,7 @@ ggplot(combinedWithPrediction, aes(GSPC)) +
     theme(plot.title = element_text(hjust = 0.5))
 ```
 
-![png](./2/output_8_1.png)
+![png](./assets/2/output_8_1.png)
 
 ```R
 # Plot actual price and predicted price on the same graph
@@ -413,7 +426,7 @@ ggplot(combinedWithPrediction, aes(date)) +
     theme(plot.title = element_text(hjust = 0.5))
 ```
 
-![png](./2/output_9_1.png)
+![png](./assets/2/output_9_1.png)
 
 
 ### Implement a two-variable regression in Excel using LINEST function and Analysis ToolPak
@@ -490,7 +503,7 @@ ggplot(HomePrice, aes(Index)) +
 ```
 
 
-![png](./3/output_3_2.png)
+![png](./assets/3/output_3_2.png)
 
 ## Implemented the Augmented Dickey-Fuller Test for checking the existence of a unit root in Case-Shiller Index series
 
@@ -530,7 +543,7 @@ acf(HomePrice)
 pacf(HomePrice)
 ```
 
-![png](./3/output_7_0.png)
+![png](./assets/3/output_7_0.png)
 
 
 ### Differencing
@@ -607,7 +620,7 @@ pacf(diff2)
 ```
 
 
-![png](./3/output_13_0.png)
+![png](./assets/3/output_13_0.png)
 
 
 ### Model 1 - ARIMA(0, 2, 0)
@@ -648,7 +661,7 @@ tsdiag(model1)
 
 
 
-![png](./3/output_15_1.png)
+![png](./assets/3/output_15_1.png)
 
 
 ### Model 2 - ARIMA(0, 2, 2)
@@ -706,7 +719,7 @@ tsdiag(model2)
 
 
 
-![png](./3/output_17_2.png)
+![png](./assets/3/output_17_2.png)
 
 
 ### Model 3 - ARIMA(2, 2, 0)
@@ -767,7 +780,7 @@ tsdiag(model3)
 
 
 
-![png](./3/output_19_2.png)
+![png](./assets/3/output_19_2.png)
 
 
 ### Seasonal ARIMA
@@ -831,7 +844,7 @@ tsdiag(model4)
 
 
 
-![png](./3/output_21_2.png)
+![png](./assets/3/output_21_2.png)
 
 
 ### Model 5 - ARIMA (0,2,0) (0,0,2) 12
@@ -888,7 +901,7 @@ tsdiag(model5)
     Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 
 
-![png](./3/output_23_2.png)
+![png](./assets/3/output_23_2.png)
 
 
 ### Model Selection
@@ -926,7 +939,7 @@ ggplot(df, aes(index(df))) +
     geom_point(aes(y = df$x, color="predicted"))
 ```
 
-![png](./3/output_26_2.png)
+![png](./assets/3/output_26_2.png)
 
 
 ```R
@@ -970,7 +983,7 @@ ggplot(withPrediction, aes(Index)) +
     geom_line(aes(y = withPrediction$CSUSHPINSA, color="actual"))
 ```
 
-![png](./3/output_28_2.png)
+![png](./assets/3/output_28_2.png)
 
 
 ```R
