@@ -1222,6 +1222,11 @@ plot(forecast_egarch_12, which="all")
 
 ![png](assets/1/output_39_0.png)
 
+## 1.7 Reference
+
+1. Daróczi, Puhle, Berlinger (2013) *"Introduction to R for Quantitative Finance"*, Packt Publishing
+2. Berlinger, Illés, Badics (2015) *"Mastering R for Quantitative Finance"*, Packt Publishing
+
 
 # Part 2 - Calculating Equilibrium FX (Multivariate Analysis)
 
