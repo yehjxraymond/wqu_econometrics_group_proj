@@ -438,10 +438,6 @@ plot(fit_tgarch_11, which = "all")
 ```
 
     
-    please wait...calculating quantiles...
-
-
-
 ![png](assets/1/output_16_1.png)
 
 
@@ -732,10 +728,6 @@ fit_egarch_12
 ```R
 plot(fit_egarch_12, which="all")
 ```
-
-    
-    please wait...calculating quantiles...
-
 
 
 ![png](assets/1/output_23_1.png)
