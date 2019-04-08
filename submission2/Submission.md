@@ -1,4 +1,9 @@
-# Volatility Analysis
+# Submission No. 2: Volatility And Multivariate Analysis
+Author	: Raymond Yeh, Vincent Louie Delfin, Lu Liu, Nazri Nawi
+
+Date	: April 8, 2019
+
+# Part 1 - Volatility Analysis
 
 ## Forecast Apple daily stock return using a GARCH model.
 Source: Yahoo Finance
