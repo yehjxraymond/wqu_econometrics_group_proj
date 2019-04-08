@@ -1990,6 +1990,6 @@ Using the second model, we can create a prediction of the quarter interest rate.
 
 [4] [https://www.investopedia.com/trading/factors-influence-exchange-rates/]
 
-[5] https://www.researchgate.net/publication/228258887_Causal_Relationships_between_Industrial_Production_Interest_Rate_and_Exchange_Rate_Evidence_on_India
+[5]https://www.researchgate.net/publication/228258887_Causal_Relationships_between_Industrial_Production_Interest_Rate_and_Exchange_Rate_Evidence_on_India
 
 [6] https://stats.stackexchange.com/questions/77791/why-use-vector-error-correction-model
