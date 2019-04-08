@@ -3,9 +3,9 @@ Author	: Raymond Yeh, Vincent Louie Delfin, Lu Liu, Nazri Nawi
 
 Date	: April 8, 2019
 
-# Part 1 - Volatility Analysis
+## Part 1 - Volatility Modelling Analysis
 
-## Forecast Apple daily stock return using a GARCH model.
+### Forecast Apple daily stock return using a GARCH model.
 Source: Yahoo Finance
 
 Select GARCH model (ARCH, GARCH-M, IGARCH, EGARCH, TARCH, multivariate GARCH etc). Explain your choice.
