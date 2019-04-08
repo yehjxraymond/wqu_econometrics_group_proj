@@ -3,6 +3,16 @@ Author	: Raymond Yeh, Vincent Louie Delfin, Lu Liu, Nazri Nawi
 
 Date	: April 8, 2019
 
+## Code & Excel File
+The code of the submission is available at [https://github.com/yehjxraymond/wqu_econometrics_group_proj/tree/master/submission2](https://github.com/yehjxraymond/wqu_econometrics_group_proj/tree/master/submission2)
+
+The R code, broken in two parts, are written in Jupyter Notebook with R Kernel and can be found at:
+
+- [./submission2/Part1.ipynb](https://github.com/yehjxraymond/wqu_econometrics_group_proj/blob/master/submission2/Part1.ipynb)
+- [./submission2/Part2.ipynb](https://github.com/yehjxraymond/wqu_econometrics_group_proj/blob/master/submission2/Part2.ipynb)
+
+Installation instruction can be found [here](https://docs.anaconda.com/anaconda/navigator/tutorials/r-lang/).
+
 ## Part 1 - Volatility Modelling Analysis
 
 ### 1.0 Volatility Analysis.
@@ -1324,7 +1334,7 @@ library(urca)
 library(tsDyn)
 ```
 
-We will first download the data from the FRED sources. From the data source, we can observe that the maximum date range that has data for all the dataset is from Jan 1992 to Jan 2017. We will make use of the monthly data. 
+We will first download the data from the sources. From the data source, we can observe that the maximum date range that has data for all the dataset is from Jan 1992 to Jan 2017. We will make use of the monthly data. 
 
 For the dataset of M1_US and M1_SG, the dataset is of annual frequency. We will resample these data using linear interpolation to yield the monthly data. 
 
