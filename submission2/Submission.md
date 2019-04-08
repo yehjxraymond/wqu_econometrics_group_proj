@@ -1920,14 +1920,6 @@ The Johansen-Procedure suggest to use r = 1
 ```
 
 
-    Error in parse(text = x, srcfile = src): <text>:1:5: unexpected symbol
-    1: The Johansen
-            ^
-    Traceback:
-
-
-
-
 ```R
 fit2 = VECM(data_simp, 2, r = 1, include = "const",estim = "ML", LRinclude = "none")
 summary(fit2)
