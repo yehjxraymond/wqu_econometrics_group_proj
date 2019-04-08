@@ -6,15 +6,15 @@ Date	: April 8, 2019
 ## Part 1 - Volatility Modelling Analysis
 
 ### Forecast Apple daily stock return using a GARCH model.
-Source: Yahoo Finance
 
-Select GARCH model (ARCH, GARCH-M, IGARCH, EGARCH, TARCH, multivariate GARCH etc). Explain your choice.
+In this assignment, we will do a forecasting of Apple (AAPL) daily stock return by applying volatility analysis using a GARCH Model.
+We will analyse each GARCH model i.e; ARCH, GARCH-M, IGARCH, EGARCH, TARCH, multivariate GARCH, then we will compare and select the best fit.
 
-Forecast next period daily return (t+1) using the chosen model. Select the timeframe in the analysis. Provide charts and comments.
-
+Daily OCHL data source of Apple is obtained from Yahoo Finance. 
 
 ```R
 # Load necessary libraries
+
 library(quantmod)
 library(ggplot2)
 library(tseries)
@@ -82,8 +82,6 @@ kurtosis(returnsDf)
 
 -1.62812865907981
 
-
-
 40.7237359235109
 
 
@@ -144,7 +142,7 @@ The normality test shows skews and kurtosis. The negative skew of the returns ma
 
 The ACF & PACF of the series suggests possibility of AR model. We will investigate the impact of AR terms on the GARCH model.
 
-The ACF & PACF of the series suggests possibility of MA terms for the GARCH mode. We will investigate the impact of additional MA terms on the GARCH model.
+The ACF & PACF of the series suggests possibility of MA terms for the GARCH model. We will investigate further the impact of additional MA terms on the GARCH model.
 
 ## GARCH Model
 
@@ -1175,13 +1173,13 @@ GARCH-M(1,1) | 11538.94 | -4.7958
 
 Comparing the different models, we can see that the asymmetric GARCH model, EGARCH(1,2), appears to be the best model for AAPL daily returns, matching our initial intuition that negative news impact the returns more significantly than positive news. 
 
-The EGARCH(1,2) model's coefficients, mu, omega, alpha1, beta1, beta2 & gamma1 are all significant. It also shows 
+The EGARCH(1,2) model's coefficients, mu, omega, alpha1, beta1, beta2 & gamma1 are all significant.
 
 We can also observe that adding AR terms to the model does not improve the model. This can be seen from the ARMA(1,0)-GARCH(1,1) model where the coefficient of the ar1 term is tested to be insignificant. 
 
 ### Forecasting with EGARCH(1,2)
 
-We will use the rolling forecast method of the package to generate the next (15) period returns.
+Now that we can be reasonably sure that our risk model works properly, we can produce VaR forecasts as well. We will use the rolling forecast method of the package to generate the next (15) period returns.
 
 
 ```R
@@ -1218,9 +1216,8 @@ forecast_egarch_12
     T+15 0.001672 0.02063
     
 
+Using EGARCH(1,2) to forecast we get the next period daily return to be 0.001672. The one-period ahead forecast for the volatility (sigma) is 0.01880. Since we assume a normal distribution, the 99% VaR can be calculated using the 99% quantile (type in qnorm(0.99)) of the standard normal distribution. The one-month 99% VaR estimatefor the next period is hence qnorm(0.99)*0.01880 = 0.04373. Hence, with 99% probability the monthly return is above -4.4%.
 
-
-Using EGARCH(1,2) to forecast we get the next period daily return to be 0.001672.
 
 The chart of the forecast is as followed:
 
@@ -1234,6 +1231,8 @@ plot(forecast_egarch_12, which="all")
 
 
 # Calculating Equilibrium FX (Multivariate Analysis)
+## Part 1 - Volatility Modelling Analysis
+
 
 You can choose any currency pair you want.
 You calculate the equilibrium FX for your local currency.
