@@ -5,7 +5,7 @@ Date	: April 8, 2019
 
 ## Part 1 - Volatility Modelling Analysis
 
-### Forecast Apple daily stock return using a GARCH model.
+### 1.0 Volatility Analysis.
 
 In this assignment, we will do a forecasting of Apple (AAPL) daily stock return by applying volatility analysis using a GARCH Model.
 We will analyse each GARCH model i.e; ARCH, GARCH-M, IGARCH, EGARCH, TARCH, multivariate GARCH, then we will compare and select the best fit.
@@ -144,7 +144,7 @@ The ACF & PACF of the series suggests possibility of AR model. We will investiga
 
 The ACF & PACF of the series suggests possibility of MA terms for the GARCH model. We will investigate further the impact of additional MA terms on the GARCH model.
 
-## GARCH Model
+## 1.1 GARCH Model
 
 Since the returns is stationary, we will model the volatility with the simplest GARCH(1,1) model first to compare against other models. 
 
@@ -284,7 +284,7 @@ show(fit_garch_11)
     
 
 
-## Asymmetric GARCH
+## 1.2 Asymmetric GARCH
 
 Noted earlier, we will want to explore the impact of asymmetry on the GARCH model due to the difference in the impact of positive and negative news to the returns process. We will start with the TGARCH model.
 
@@ -741,7 +741,7 @@ plot(fit_egarch_12, which="all")
 ![png](assets/1/output_23_1.png)
 
 
-## Other Models
+## 1.3 Other Models
 
 ### ARCH
 
@@ -1154,7 +1154,7 @@ show(fit_arma_10_garch_11)
     
 
 
-## Summary (Volatility Analysis)
+## 1.4 Summary (Volatility Analysis)
 
 ### Comparison of Viable Models
 
@@ -1177,7 +1177,7 @@ The EGARCH(1,2) model's coefficients, mu, omega, alpha1, beta1, beta2 & gamma1 a
 
 We can also observe that adding AR terms to the model does not improve the model. This can be seen from the ARMA(1,0)-GARCH(1,1) model where the coefficient of the ar1 term is tested to be insignificant. 
 
-### Forecasting with EGARCH(1,2)
+## 1.5 Forecasting with EGARCH(1,2)
 
 Now that we can be reasonably sure that our risk model works properly, we can produce VaR forecasts as well. We will use the rolling forecast method of the package to generate the next (15) period returns.
 
@@ -1215,6 +1215,7 @@ forecast_egarch_12
     T+14 0.001672 0.02052
     T+15 0.001672 0.02063
     
+## 1.6 Conclusion
 
 Using EGARCH(1,2) to forecast we get the next period daily return to be 0.001672. The one-period ahead forecast for the volatility (sigma) is 0.01880. Since we assume a normal distribution, the 99% VaR can be calculated using the 99% quantile (type in qnorm(0.99)) of the standard normal distribution. The one-month 99% VaR estimatefor the next period is hence qnorm(0.99)*0.01880 = 0.04373. Hence, with 99% probability the monthly return is above -4.4%.
 
@@ -1230,19 +1231,9 @@ plot(forecast_egarch_12, which="all")
 ![png](assets/1/output_39_0.png)
 
 
-# Calculating Equilibrium FX (Multivariate Analysis)
-## Part 1 - Volatility Modelling Analysis
+# Part 2 - Calculating Equilibrium FX (Multivariate Analysis)
 
-
-You can choose any currency pair you want.
-You calculate the equilibrium FX for your local currency.
-
-1. Indicate economic theories and models for calculating equilibrium FX.
-2. Indicate macroeconomic variables used for calculating equilibrium FX.
-3. Explain the connection between linear regression and Vector Error Correction (VEC).
-4. Calculate equilibrium FX using VEC. You can use the Behavioural Equilibrium Exchange Rate (BEER) approach. Comment results.
-
-### Indicate economic theories and models for calculating equilibrium FX.
+### 2.1 Economic theories and models for calculating equilibrium FX.
 
 The equilibirum foreign exchange (FX) rate is determined by the demand and supply of one currency given another. This value can be determined by the intersection between the demand curve and the supply curve of the currency pair.
 
@@ -1258,7 +1249,7 @@ The intersection of these two curves determine the equilibrium FX rate between P
 - A rate higher than the equilibrium will result in the supply of Euros to exceed the demand, applying a downward pressure in the rate, towards short-term equilibrium.
 - A rate lower than the equilibirum will result in the demand of Eruos to exceed the supply, applying a upward pressure in the rate, towards short-term equilibirum.
 
-## Indicate macroeconomic variables used for calculating equilibrium FX.
+## 2.2 Macroeconomic variables used for calculating equilibrium FX.
 
 Macroeconomic variables which affects the demand or supply curve of the one currency, expressed in another will affect the equilibrium FX rate.
 
@@ -1286,7 +1277,7 @@ The Index of Industrial Production (IIP) has shown to be dependent on the exchan
 
 Political stability of a country also affects the exchange rate positively. Investors are encouraged to invest in countries with higher political stability, resulting in higher demand for the currency[4].
 
-## Explain the connection between linear regression and Vector Error Correction (VEC).
+## 2.3 The connection between linear regression and Vector Error Correction (VEC).
 
 The Vector Auto-Regressive(VAR) model extends the linear regression model by allowing different processes to be grenerated from their mutual histories. 
 
@@ -1300,9 +1291,9 @@ The Vector Error Correction (VEC) model, also known as cointegration model, exte
 
 The VECM integrates information of the cointegration of the variables to allow them to return to long-run equilibirum. This can be seen from the PI term in the equation above. We can see that the VECM is a linear model, forming a linear relationship between the first difference of the result and the difference(s) of the previous results of the process, with it's constant and error terms.
 
-## Calculate equilibrium FX using VEC. You can use the Behavioural Equilibrium Exchange Rate (BEER) approach. Comment results.
+## 2.4 Calculate equilibrium FX using VEC. The Behavioural Equilibrium Exchange Rate (BEER) approach will be applied to the analysis.
 
-## Calculating USD/SGD
+## USD/SGD is used for this analysis
 
 ### Models
 
@@ -1336,7 +1327,7 @@ library(urca)
 library(tsDyn)
 ```
 
-We will first download the data from the relevant sources. From the data source, we can observe that the maximum date range that has data for all the dataset is from Jan 1992 to Jan 2017. We will make use of the monthly data. 
+We will first download the data from the FRED sources. From the data source, we can observe that the maximum date range that has data for all the dataset is from Jan 1992 to Jan 2017. We will make use of the monthly data. 
 
 For the dataset of M1_US and M1_SG, the dataset is of annual frequency. We will resample these data using linear interpolation to yield the monthly data. 
 
@@ -1409,11 +1400,6 @@ nrow(data)
     1991-04-01 1.7688  0.014311606 -0.018541698    -1.52 0.7985328
     1991-05-01 1.7688 -0.003334098  0.003669354    -1.65 0.7949563
     1991-06-01 1.7782  0.006943358 -0.005656008    -1.81 0.7912607
-
-
-
-313
-
 
 Once the data has been transformed to the xts series, we can now plot the all the different dataset. 
 
