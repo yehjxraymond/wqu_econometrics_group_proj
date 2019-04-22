@@ -575,9 +575,9 @@ Finally, further examining our results, most of our returns are accounted for by
 
 
 
-## Recommendations for further investigation
+## Recommendations For Further Investigation
 
-Statistical arbitrage has been explored in cryptocurrencies and was found to be promising2. However, academic papers tend to apply simplifying assumptions as we have discussed previously. 
+Statistical arbitrage has been explored in cryptocurrencies and was found to be promising. However, academic papers tend to apply simplifying assumptions as we have discussed previously. 
 
 Also, algorithmic trading strategies may decrease in effectiveness in efficient markets. The paper by Fischer and Co., Statistical Arbitrage in Cryptocurrency Markets, examined data in 2018. Since the cryptocurrency markets is relatively new and less developed than other financial markets, some of their positive results may disappear as the cryptocurrency markets become more efficient.
 
