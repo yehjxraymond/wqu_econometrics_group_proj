@@ -4,7 +4,7 @@ Author	: Raymond Yeh, Vincent Louie Delfin, Lu Liu, Nazri Nawi
 Date	: April 22, 2019
 
 
-## Backgroud of Trading Strategy
+## Backgroud of The Trading Strategy
 
 Inspired by Sergey Malchevskiy's Pairs Trading with Cryptocurrencies [1], we will perform statistical arbitrage on a pair of cryptocurrency. The strategy aims to be market neutral where it will take a equal weights of long and short positions on the pair to prevent taking a net long or short position in the market as a whole due to the high unpredictability of the trend in the cryptocurrency market.
 
