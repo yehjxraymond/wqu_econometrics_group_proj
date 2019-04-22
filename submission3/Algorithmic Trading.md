@@ -1,26 +1,14 @@
+# Submission No. 2: Algorithmic Trading Strategy for Cryptocurrencies Pair
+Author	: Raymond Yeh, Vincent Louie Delfin, Lu Liu, Nazri Nawi
 
-# Algorithmic Trading
-
-Design your own algorithmic trading strategy in R.
-
-- Number of assets in the strategy: one or more assets
-- Type of asset: you select it (stock, commodity, FX, crypto etc)
-- Timeframe: you select it
-- Coding language: R; you can also use Excel for basic calculations and testing
-- Model: regression, ARMA, GARCH, VAR, VEC or any other quantitative model you know. You can combine model with technical analysis indicators (MA, MACD, Bollinger bands etc) as in module 7 examples. You can also use machine learning algorithm (it is not compulsory).
+Date	: April 22, 2019
 
 
-1. Explain the algorithm step by step
-2. Provide R code and/or Excel calculations
-3. Provide charts
-4. Calculate returns, cumulative returns, standard deviation and forecasts
-5. Indicate research papers or books on this topic
+## Backgroud of Trading Strategy
 
-## Trading Strategy
+Inspired by Sergey Malchevskiy's Pairs Trading with Cryptocurrencies [1], we will perform statistical arbitrage on a pair of cryptocurrency. The strategy aims to be market neutral where it will take a equal weights of long and short positions on the pair to prevent taking a net long or short position in the market as a whole due to the high unpredictability of the trend in the cryptocurrency market.
 
-Inspired by Sergey Malchevskiy's Pairs Trading with Cryptocurrencies [1], we will perform statistical arbitrage on  a pair of cryptocurrency. The strategy aims to be market neutral where it will take a equal weights of long and short positions on the pair to prevent taking a net long or short position in the market as a whole due to the high unpredictability of the trend in the cryptocurrency market.
-
-The intuition is that a pair of cryptocurrency with highly cointegrated daily return will have their daily returns reverting to 0 spread (difference in their daily returns). The strategy will enter a long/short position when the daily returns spread is high and will exit the positions when the daily returns spread revert to the normal level.
+The intuition is that a pair of cryptocurrencies with highly cointegrated daily return will have their daily returns reverting to 0 spread (difference in their daily returns). The strategy will enter a long/short position when the daily returns spread is high and will exit the positions when the daily returns spread revert to the normal level.
 
 The experiment will determine:
 
@@ -287,6 +275,7 @@ GENERATE_SIGNAL = function(x, enter, exit){
 ```R
 # Enter when current return spread is 3 standard deviation away
 # and exit when it's 1 standard deviation away
+
 ENTER_RET = Z_SPREAD(3)
 EXIT_RET = Z_SPREAD(1)
 
