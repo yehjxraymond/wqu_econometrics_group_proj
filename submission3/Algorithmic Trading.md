@@ -412,15 +412,6 @@ SharpeRatio.annualized(BENCHMARK, Rf = 0)
 <thead><tr><th></th><th scope=col>daily.returns</th></tr></thead>
 <tbody>
 	<tr><th scope=row>Cumulative Return</th><td>-0.3542302</td></tr>
-</tbody>
-</table>
-
-
-
-
-<table>
-<thead><tr><th></th><th scope=col>daily.returns</th></tr></thead>
-<tbody>
 	<tr><th scope=row>Annualized Return</th><td>-0.2860992</td></tr>
 </tbody>
 </table>
@@ -428,27 +419,21 @@ SharpeRatio.annualized(BENCHMARK, Rf = 0)
 
 
 
-0.677199512468512
+<table>
 
+<tbody>
+	<tr><th scope=row>maxDrawdown</th><td>0.677199512468512</td></tr>
+
+</table>
 
 
 <table>
 <thead><tr><th></th><th scope=col>daily.returns</th></tr></thead>
 <tbody>
 	<tr><th scope=row>StdDev Sharpe (Rf=0%, p=95%):</th><td>-0.01609935</td></tr>
-</tbody>
-</table>
-
-
-
-
-<table>
-<thead><tr><th></th><th scope=col>daily.returns</th></tr></thead>
-<tbody>
 	<tr><th scope=row>Annualized Sharpe Ratio (Rf=0%)</th><td>-0.4688807</td></tr>
 </tbody>
 </table>
-
 
 
 As we can see, the statstical arbitrage model outperforms the buy and hold strategy greatly in the period of market downturn. 
@@ -543,15 +528,6 @@ SharpeRatio.annualized(RES$tradeReturn, Rf = 0)
 <thead><tr><th></th><th scope=col>tradeReturn</th></tr></thead>
 <tbody>
 	<tr><th scope=row>Cumulative Return</th><td>0.1052364</td></tr>
-</tbody>
-</table>
-
-
-
-
-<table>
-<thead><tr><th></th><th scope=col>tradeReturn</th></tr></thead>
-<tbody>
 	<tr><th scope=row>Annualized Return</th><td>0.2404972</td></tr>
 </tbody>
 </table>
@@ -559,28 +535,20 @@ SharpeRatio.annualized(RES$tradeReturn, Rf = 0)
 
 
 
-0.0324139119521271
-
+<table>
+<tbody>
+	<tr><th scope=row>maxDrawdown</th><td>0.0324139119521271</td></tr>
+</tbody>
+</table>
 
 
 <table>
 <thead><tr><th></th><th scope=col>tradeReturn</th></tr></thead>
 <tbody>
 	<tr><th scope=row>StdDev Sharpe (Rf=0%, p=95%):</th><td>0.1232066</td></tr>
-</tbody>
-</table>
-
-
-
-
-<table>
-<thead><tr><th></th><th scope=col>tradeReturn</th></tr></thead>
-<tbody>
 	<tr><th scope=row>Annualized Sharpe Ratio (Rf=0%)</th><td>2.119837</td></tr>
 </tbody>
 </table>
-
-
 
 From the charts above, we can see that the trading strategy is also applicable in a market with sideway movements. However, we can see that the maximum drawdown is still huge, at >30%.
 
