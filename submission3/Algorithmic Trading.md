@@ -603,19 +603,9 @@ SharpeRatio.annualized(FORECASTED$tradeReturn, Rf = 0.02)
 <thead><tr><th></th><th scope=col>tradeReturn</th></tr></thead>
 <tbody>
 	<tr><th scope=row>StdDev Sharpe (Rf=2%, p=95%):</th><td>-2.675277</td></tr>
-</tbody>
-</table>
-
-
-
-
-<table>
-<thead><tr><th></th><th scope=col>tradeReturn</th></tr></thead>
-<tbody>
 	<tr><th scope=row>Annualized Sharpe Ratio (Rf=504%)</th><td>-8.746845</td></tr>
 </tbody>
 </table>
-
 
 
 As seen from the sharpe ratio, the additional returns does not justify the risk as a standalone asset. However, it does not mean that the statistical arbitrage on the pair is not viable to be included in a portfolio. More work can be done to evaluate how this model can be integrated with traditional portfolio to add diversity.
