@@ -335,43 +335,24 @@ SharpeRatio.annualized(RES$tradeReturn, Rf = 0)
 <thead><tr><th></th><th scope=col>tradeReturn</th></tr></thead>
 <tbody>
 	<tr><th scope=row>Cumulative Return</th><td>0.352222</td></tr>
-</tbody>
-</table>
-
-
-
-
-<table>
-<thead><tr><th></th><th scope=col>tradeReturn</th></tr></thead>
-<tbody>
 	<tr><th scope=row>Annualized Return</th><td>0.2627021</td></tr>
 </tbody>
 </table>
 
 
-
-
-0.255531129087392
-
-
+<table>
+<tbody>
+	<tr><th scope=row>maxDrawdown</th><td>0.255531129087392</td></tr>
+</tbody>
+</table>
 
 <table>
 <thead><tr><th></th><th scope=col>tradeReturn</th></tr></thead>
 <tbody>
 	<tr><th scope=row>StdDev Sharpe (Rf=0%, p=95%):</th><td>0.05379146</td></tr>
-</tbody>
-</table>
-
-
-
-
-<table>
-<thead><tr><th></th><th scope=col>tradeReturn</th></tr></thead>
-<tbody>
 	<tr><th scope=row>Annualized Sharpe Ratio (Rf=0%)</th><td>0.7710583</td></tr>
 </tbody>
 </table>
-
 
 
 From the values above, we can see that the model is viable but risky. To have a better understanding of the performance of the model in relation to other models, we will compare it with a benchmark of buy-and-hold strategy which holds both assets in equal weights in the same timeframe. 
