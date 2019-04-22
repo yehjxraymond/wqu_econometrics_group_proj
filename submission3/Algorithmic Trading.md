@@ -189,7 +189,7 @@ plot(PAIRXTS)
 ![png](assets/output_14_1.png)
 
 
-As we can see above, the pairs do not seem to have high degree of correlation. We will attempt to validate our hypthesis that the daily returns of the pair follows a stationary trend.
+As we can see above, the pairs do not seem to have high degree of correlation. We will attempt to validate our hypothesis that the daily returns of the pair follows a stationary trend.
 
 The spread for the daily return on the two cryptocurrencies will be plotted first.
 
