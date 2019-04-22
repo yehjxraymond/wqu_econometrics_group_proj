@@ -617,6 +617,37 @@ charts.PerformanceSummary(na.approx(BENCHMARK))
 
 Comparing the performance, we can see that a buy-and-hold strategy greatly underperform compared to the statistical arbitrage model. However, it can also be seen that the maximum drawdown is only at 20%, compared to 30% on the statstical arbitrage model. 
 
+## Implementation Limitations 
+
+In order to facilitate our investigation of the potential feasibility of trading strategies, we have applied simplifying assumptions. Firstly, we only examine closing data. At day t, we apply the algorithm to generate trading signal for day t. The return for day t + 1 will then be based on closing prices at day t and day t + 1. In reality, we would not be able to execute the trading decision at day t (i.e. note that we first wait to get the closing price for day t). Rather, we would execute the trade at day t + 1 at the opening price or an intraday price. Due to market movements, there may be slippage costs as well. That is, we may not be able to execute our intended trades at exactly the intended price.
+
+Secondly, we ignore fees. Our algorithm may do well in this regard because it trades infrequently. Still, the effects of fees could still be substantial. Trading fees can range from 0.10% to 0.85%2, in addition to withdrawal fees. 
+
+Finally, further examining our results, most of our returns are accounted for by a few large downward movements. If we compare our strategy to a “short and hold” strategy, it beats our algorithm. In the testing period from Jan 2019 to Apr 2019, the cumulative returns are compared below.
+
+<table>
+<thead><tr><th></th><th scope=col>Cummulative Return</th></tr></thead>
+<tbody>
+	<tr><th scope=row><p align="left">Short XRP</p></th><td><p align="center">14.96%</p></td></tr>
+	<tr><th scope=row><p align="left">Short ZEC</p></th><td><p align="center">20.76%</p></td></tr>
+	<tr><th scope=row><p align="left">Short both (50-50)</p></th><td><p align="center">17.86%</p></td></tr>
+	<tr><th scope=row><p align="left">Our Algorithm</p></th><td><p align="center">10.52%</p></td></tr>
+</tbody>
+</table>
+
+
+
+## Recommendations for further investigation
+
+Statistical arbitrage has been explored in cryptocurrencies and was found to be promising2. However, academic papers tend to apply simplifying assumptions as we have discussed previously. 
+
+Also, algorithmic trading strategies may decrease in effectiveness in efficient markets. The paper by Fischer and Co., Statistical Arbitrage in Cryptocurrency Markets, examined data in 2018. Since the cryptocurrency markets is relatively new and less developed than other financial markets, some of their positive results may disappear as the cryptocurrency markets become more efficient.
+
+Another area to explore is when statistical arbitrage work best. In periods wherein there is a strong trend, momentum strategies might be better suited. Recall that the underlying belief in momentum strategies is the opposite of mean-reversion techniques.  
+
+Finally, we may enrich our trading strategy by using data other than price. The paper “Algorithmic Trading of Cryptocurrency Based on Twitter Sentiment Analysis” by Colliani and Co.4 demonstrated some success in predicting cryptocurrency market movement using supervised learning algorithms.
+
+
 ## Summary
 
 In conclusion, statistical arbitrage on the XRP/ZEC pair is a viable model for automated trading, and outperforms the benchmark. However, we can see that the strategy is very risky, with large drawdowns, but also with high returns. 
@@ -653,6 +684,10 @@ As seen from the sharpe ratio, the additional returns does not justify the risk 
 
 ## References
 [1] https://towardsdatascience.com/pairs-trading-with-cryptocurrencies-e79b4a00b015
+[2] https://www.btcmarkets.net/fees
+[3] Fischer, T.G.; Krauss, C.; Deinert, A. Statistical Arbitrage in Cryptocurrency Markets. J. Risk Financial Manag. 2019, 12, 31.
+[4] Colianni, Stuart G. et al. “Algorithmic Trading of Cryptocurrency Based on Twitter Sentiment Analysis.” (2015).
+
 
 ## Additional Bibliography
 
